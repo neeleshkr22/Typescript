@@ -1,6 +1,9 @@
 const x: number = 22;
 console.log(x);
 
+const numarr:number[] = {22,33,45,66,10};
+console.log(numarr);
+
 const namee: string = "Zord";
 console.log(namee);
 
