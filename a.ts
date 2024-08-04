@@ -203,3 +203,11 @@ function identity<T>(arg:T):T{
 
 let Output = identity<string>("Zord");
 let Output2 = identity<number>(22);  
+
+
+
+async function func_name(url: string): Promise<any>{
+    const response = await fetch(api_url, method/request type, [other_params]);
+    const data = await response.json();
+    return data;
+}
