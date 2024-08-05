@@ -7,7 +7,9 @@ console.log(numarr);
 const namee: string = "Zord";
 console.log(namee);
 
-
+function after(namma:string){
+	console.log("Hello");
+}
 function greeting(yourname: string){
     console.log("hello, "+ yourname);
 }        
