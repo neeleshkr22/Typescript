@@ -8,7 +8,7 @@ const namee: string = "Zord";
 console.log(namee);
 
 function after(namma:string){
-	console.log("Hello");
+	console.log("Hello world");
 }
 function greeting(yourname: string){
     console.log("hello, "+ yourname);
