@@ -225,4 +225,28 @@ const config: Readonly<Config> = {
   apiKey: 'abcdef123456',
 };
 
+
 // config.apiKey = 'newkey'; // Error: Cannot assign to 'apiKey' because it is a read-only property.
+
+interface User{
+    id: string,
+    email: string,
+    name : string,
+    age : number
+}
+
+// function sumofAge(user1 : User, user2 : User){
+//     return user1.age + user2.age;
+// }
+
+// sumofAge({name : "John", age : 25}, {name : "Doe", age : 30});
+// The above code will return 55, which is the sum of ages of user1 and user2
+
+
+type UpdateProps = Pick<User, "name" | "age">;
+
+type UpdatePropsPartial = Partial<UpdateProps>;
+
+function updateUser(updateuser: UpdateProps){
+    console.log(updateuser.name, updateuser.age);
+}
