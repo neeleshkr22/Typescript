@@ -7,7 +7,7 @@ const app = express();
 const userProfileSchema = z.object({
   name: z.string().min(1, { message: "Name cannot be empty" }),
   email: z.string().email({ message: "Invalid email format" }),
-  age: z.number().min(18, { message: "You must be at least 18 years old" }).optional(),
+  age: z.number().min(18, { message: "You must be at least 18 years old to access" }).optional(),
 });
 
 export type FinalUserSchema = z.infer<typeof userProfileSchema>;
