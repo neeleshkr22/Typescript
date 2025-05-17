@@ -233,14 +233,193 @@ const Hello: React.FC<Props> = ({ name }) => {
 
 ## ❓ Common Interview Questions
 
-1. What are the key benefits of TypeScript over JavaScript?
-2. Explain the difference between `interface` and `type`.
-3. What is type inference?
-4. What are generics and why are they useful?
-5. How does TypeScript help in large-scale applications?
-6. Explain keyof and typeof operators in TypeScript.
-7. What is the difference between unknown and any?
+A comprehensive guide for preparing TypeScript interview questions — from basics to advanced.
 
+---
+
+## ❓ Common Interview Questions & Answers
+
+### 1. What are the key benefits of TypeScript over JavaScript?
+- Static typing helps catch errors during development.
+- Better IntelliSense and editor support.
+- Improves readability and maintainability of code.
+- Supports modern JavaScript features with compatibility.
+- Helps in large-scale app development with better tooling.
+
+---
+
+### 2. Explain the difference between `interface` and `type`.
+
+| Feature         | `interface`                          | `type`                                      |
+|----------------|--------------------------------------|---------------------------------------------|
+| Extension      | Can extend and be extended by others | Can use intersection types (`&`)            |
+| Declaration Merging | Supported                        | Not supported                               |
+| Use Case       | For object shapes                     | For unions, primitives, tuples, etc.        |
+
+---
+
+### 3. What is type inference?
+TypeScript automatically infers the type of a variable when it's declared and initialized.
+
+```ts
+let name = "Neelesh"; // inferred as string
+```
+
+---
+
+### 4. What are generics and why are they useful?
+Generics allow you to write flexible and reusable functions, classes, and interfaces that work with multiple types.
+
+```ts
+function identity<T>(value: T): T {
+  return value;
+}
+```
+
+They ensure type safety while maintaining reusability.
+
+---
+
+### 5. How does TypeScript help in large-scale applications?
+- Detects bugs early via static typing
+- Enforces code consistency
+- Enables better refactoring
+- Improves documentation with types
+- Helps teams work collaboratively with contracts (types/interfaces)
+
+---
+
+### 6. Explain `keyof` and `typeof` in TypeScript.
+
+- `typeof`: Gets the type of a value.
+- `keyof`: Gets the keys of a type as a union of string literals.
+
+```ts
+const user = { name: "John", age: 30 };
+type User = typeof user; // { name: string; age: number }
+type UserKeys = keyof User; // "name" | "age"
+```
+
+---
+
+### 7. What is the difference between `unknown` and `any`?
+
+- `any`: Opts out of type checking. Can do anything with it.
+- `unknown`: Safer alternative to `any`. Requires type-checking before usage.
+
+```ts
+let value: unknown = "hello";
+value.toUpperCase(); // ❌ Error
+if (typeof value === "string") value.toUpperCase(); // ✅ OK
+```
+
+---
+
+### 8. What is a type guard in TypeScript?
+A way to narrow down the type of a variable within a conditional block.
+
+```ts
+function isString(val: unknown): val is string {
+  return typeof val === "string";
+}
+```
+
+---
+
+### 9. What is declaration merging?
+When you declare the same `interface` multiple times, TypeScript merges them.
+
+```ts
+interface User {
+  name: string;
+}
+interface User {
+  age: number;
+}
+// Final: { name: string; age: number; }
+```
+
+---
+
+### 10. What is a discriminated union?
+A technique using a common literal field to differentiate between multiple object types.
+
+```ts
+type Shape = { kind: "circle"; radius: number } | { kind: "square"; size: number };
+
+function area(shape: Shape) {
+  if (shape.kind === "circle") return Math.PI * shape.radius ** 2;
+  return shape.size ** 2;
+}
+```
+
+---
+
+### 11. What does `as const` do in TypeScript?
+It marks the object/array as fully immutable and infers literal types.
+
+```ts
+const role = ["admin", "user"] as const;
+// type: readonly ["admin", "user"]
+```
+
+---
+
+### 12. When would you use `never` in TypeScript?
+Used when a function **never returns** or a variable can **never be true**.
+
+```ts
+function throwError(): never {
+  throw new Error("Something went wrong");
+}
+```
+
+---
+
+### 13. Difference between `readonly` and `const`?
+
+- `const`: Variable cannot be reassigned.
+- `readonly`: Property of an object cannot be changed after initialization.
+
+```ts
+const obj = { name: "Neelesh" } as const;
+// or
+interface User { readonly name: string; }
+```
+
+---
+
+### 14. How do you type an array of objects?
+
+```ts
+type User = { name: string; age: number };
+const users: User[] = [{ name: "A", age: 20 }];
+```
+
+---
+
+### 15. What is the difference between structural and nominal typing?
+TypeScript uses **structural typing** – types are compatible if their structures match, regardless of name.
+
+```ts
+type A = { name: string };
+type B = { name: string };
+const a: A = { name: "John" };
+const b: B = a; // ✅ OK in TypeScript
+```
+
+---
+
+## 💡 Pro Tips
+
+- Use `strict` mode in `tsconfig.json` to catch most bugs early.
+- Use utility types like `Partial<T>`, `Required<T>`, `Readonly<T>`, `Record<K,T>`, etc.
+- Prefer `interface` for object shapes and `type` for everything else.
+- Always define return types of functions for clarity and safety.
+
+---
+
+🧠 Practice, build, and explore more to stay interview-ready!
 ---
 
 ## ✅ Bonus: Config & Tips
